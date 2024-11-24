@@ -1,0 +1,69 @@
+{
+  "name": "next-server-actions-parallel",
+  "version": "0.0.1",
+  "description": "Run Next.js server actions in parallel.",
+  "keywords": [
+    "nextjs",
+    "server-actions",
+    "server",
+    "actions",
+    "parallel",
+    "concurrent",
+    "concurrency",
+    "non-blocking",
+    "performance",
+    "react",
+    "typescript"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/icflorescu/next-server-actions-parallel",
+  "author": {
+    "name": "Ionut-Cristian Florescu",
+    "email": "ionut.florescu@gmail.com",
+    "url": "https://github.com/icflorescu"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/icflorescu"
+  },
+  "files": [
+    "./dist",
+    "./README.md",
+    "./LICENSE"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "test": "playwright test",
+    "lint": "next lint",
+    "build": "tsup"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "next": "15.0.3",
+    "playwright": "^1.49.0",
+    "react": "19.0.0-rc-66855b96-20241106",
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
+  }
+}

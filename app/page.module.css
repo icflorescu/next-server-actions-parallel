@@ -1,0 +1,47 @@
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header,
+.footer {
+  padding: 1rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 600px;
+  max-width: 80%;
+}
+
+.button {
+  width: 240px;
+}
+
+.results {
+  min-height: 52px;
+  padding: 1rem;
+  font-family: monospace;
+  background: color-mix(in srgb, var(--gray) 20%, var(--background));
+  border: 1px solid color-mix(in srgb, var(--gray) 70%, var(--background));
+  border-radius: 4px;
+}
+
+.label {
+  font-size: 87.5%;
+  color: var(--gray);
+}
