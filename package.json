@@ -1,6 +1,6 @@
 {
   "name": "next-server-actions-parallel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run Next.js server actions in parallel.",
   "keywords": [
     "nextjs",
