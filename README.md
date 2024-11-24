@@ -1,4 +1,7 @@
 # Next.js Parallel Server Actions
+[![NPM version][npm-image]][npm-url]
+[![License][license-image]][license-url]
+[![Sponsor the author][sponsor-image]][sponsor-url]
 
 Run multiple Next.js server actions in parallel.
 
@@ -104,4 +107,11 @@ But since this is a common pain point for many developers, I've decided to provi
 
 ## License
 
-The [MIT License](https://github.com/icflorescu/next-server-actions-parallel/blob/master/LICENSE).
+The [MIT License](LICENSE).
+
+[npm-url]: https://npmjs.org/package/mantine-datatable
+[license-url]: LICENSE
+[sponsor-url]: https://github.com/sponsors/icflorescu
+[npm-image]: https://img.shields.io/npm/v/mantine-datatable.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/mantine-datatable.svg?style=flat-square
+[sponsor-image]: https://img.shields.io/badge/sponsor-violet?style=flat-square
