@@ -109,9 +109,9 @@ But since this is a common pain point for many developers, I've decided to provi
 
 The [MIT License](LICENSE).
 
-[npm-url]: https://npmjs.org/package/mantine-datatable
+[npm-url]: https://npmjs.org/package/next-server-actions-parallel
 [license-url]: LICENSE
 [sponsor-url]: https://github.com/sponsors/icflorescu
-[npm-image]: https://img.shields.io/npm/v/mantine-datatable.svg?style=flat-square
-[license-image]: http://img.shields.io/npm/l/mantine-datatable.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/next-server-actions-parallel.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/next-server-actions-parallel.svg?style=flat-square
 [sponsor-image]: https://img.shields.io/badge/sponsor-violet?style=flat-square
