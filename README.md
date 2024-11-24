@@ -98,6 +98,9 @@ The `runParallelAction` client-side utility function will simply await the promi
 
 It may be hard to believe, but it's a trick that actually works.
 
+This repository contains a simple Next.js app that demonstrates it in action:
+[Check it on StackBlitz ⚡️](https://stackblitz.com/~/github.com/icflorescu/next-server-actions-parallel)
+
 _Note:_ Wrapping the promise in an object would also work, but I've chosen the array for data-transfer efficiency.
 
 ## Do I actually need to use this library?
