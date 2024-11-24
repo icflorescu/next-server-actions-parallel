@@ -70,7 +70,7 @@ export default async function Page() {
 
 ## Show gratitude
 
-If you find my open-source work useful, please consider sponsing me on [GitHub Sponsors](https://github.com/sponsors/icflorescu).
+If you find [my open-source work](https://github.com/icflorescu) useful, please consider sponsing me on [GitHub Sponsors](https://github.com/sponsors/icflorescu).
 
 ## Background story
 
@@ -82,7 +82,7 @@ Plus, since server actions are implemented with `POST` requests, some are reluct
 
 However, there are many reasons why projects like [tRPC.io](https://trpc.io), [Telefunc](https://telefunc.com) and other *RPCs were built (and have no problem using `POST` requests to fetch data). If you're **building real, data-rich applications** you'd definitely want something like [tRPC.io](https://trpc.io) for type-safety and the fact that you don't have to build and maintain hundreds of API endpoints just to populate dynamic UI components (autocompletes and selects).
 
-[tRPC.io](https://trpc.io) is the "batteries-included" choice (I'm a big fan and former contributor - see [tRPC-SvelteKit](https://icflorescu.github.io/trpc-sveltekit/)) but I always found the amount of boilerplate to be a bit discouraging for new developers and/or small projects. [Telefunc](https://telefunc.com) looks like a nice alternative, but it doesn't (yet?) have an obvious way of integrating with the Next.js app router.
+[tRPC.io](https://trpc.io) is the "batteries-included" choice (I'm a big fan and former contributor to the ecosystem - see [tRPC-SvelteKit](https://icflorescu.github.io/trpc-sveltekit/)) but I always found the amount of boilerplate to be a bit discouraging for new developers and/or small projects. [Telefunc](https://telefunc.com) looks like a nice alternative, but it doesn't (yet?) have an obvious way of integrating with the Next.js app router.
 
 It would be nice to use server actions for RPC without the current limitation of being unable to call multiple functions in parallel.
 
