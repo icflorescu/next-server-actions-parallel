@@ -54,15 +54,16 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
-    "@types/node": "^20",
+    "@types/node": "^22.9.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "eslint": "^8",
+    "eslint": "^9.15.0",
     "eslint-config-next": "15.0.3",
+    "eslint-plugin-no-relative-import-paths": "^1.5.5",
     "next": "15.0.3",
     "playwright": "^1.49.0",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "react": "19.0.0-rc-91061073-20241121",
+    "react-dom": "19.0.0-rc-91061073-20241121",
     "tsup": "^8.3.5",
     "typescript": "^5.7.2"
   }
