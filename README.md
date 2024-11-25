@@ -43,7 +43,7 @@ import { runParallelAction } from 'next-server-actions-parallel';
 import { listUsers, listProducts } from './page.actions';
 
 export default async function Page() {
-  // 👇 this will take slightly more than 3 seconds, but definitely not > 6.
+  // 👇 this may take slightly more than 3 seconds, but a lot less than 6.
   const [users, products] = await Promise.all([
     runParallelAction(listUsers()),
     runParallelAction(listProducts('82b2ab20-ec1e-4539-85a2-ea6737555250')),
