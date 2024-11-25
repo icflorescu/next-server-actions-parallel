@@ -54,7 +54,7 @@
     "check": "next lint && tsc",
     "build": "next build",
     "start": "next start",
-    "prepublishOnly": "tsup"
+    "prepublishOnly": "pnpm version patch && tsup"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
