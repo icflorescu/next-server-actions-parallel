@@ -76,6 +76,11 @@ Because a lot of people are interested in this feature. See:
 - [https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently](https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently)
 - [https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series](https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series)
 
+## How does it perform?
+
+In a nutshell: a lot better than default Next.js server actions, not as fast as REST API routes.  
+Check it in your specific deployment environment and decide if it makes sense for your project.
+
 ## Show gratitude
 
 If you find [my open-source work](https://github.com/icflorescu) useful, please consider sponsing me on [GitHub Sponsors](https://github.com/sponsors/icflorescu).
