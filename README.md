@@ -1,4 +1,4 @@
-# Next.js Parallel Server Actions
+# Parallel Next.js Server Actions
 [![NPM version][npm-image]][npm-url]
 [![License][license-image]][license-url]
 [![Sponsor the author][sponsor-image]][sponsor-url]
