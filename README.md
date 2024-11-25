@@ -100,10 +100,10 @@ Well, that's what [next-server-actions-parallel](https://github.com/icflorescu/n
 The `createParallelAction` is simply wrapping the promise your server action returns in an array (a single-ellement tuple, to be more precise - see note below) and returning that array instead of the result of the promise.
 The `runParallelAction` client-side utility function will simply await the promise and return the array element.
 
-It may be hard to believe, but it's a trick that actually works.
+This repository contains a simple Next.js app that demonstrates it in action, so you can check it oun in different environments and decide if it makes sense for your project.
 
-This repository contains a simple Next.js app that demonstrates it in action:
-[Check it on StackBlitz ⚡️](https://stackblitz.com/~/github.com/icflorescu/next-server-actions-parallel)
+- [Check it on StackBlitz ⚡️](https://stackblitz.com/~/github.com/icflorescu/next-server-actions-parallel)
+- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ficflorescu%2Fnext-server-actions-parallel)
 
 _Note:_ Wrapping the promise in an object would also work, but I've chosen the array for data-transfer efficiency.
 
