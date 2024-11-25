@@ -120,18 +120,18 @@ export default function Home() {
           </thead>
           <tbody>
             <tr>
-              <td>Parallel server actions</td>
-              <td>
-                <span aria-busy={parallelActionsStatus.isRunning}>
-                  {parallelActionsStatus.executionTime && `${parallelActionsStatus.executionTime} ms`}
-                </span>
-              </td>
-            </tr>
-            <tr>
               <td>Simple API Routes</td>
               <td>
                 <span aria-busy={apiRoutesStatus.isRunning}>
                   {apiRoutesStatus.executionTime && `${apiRoutesStatus.executionTime} ms`}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Parallel server actions</td>
+              <td>
+                <span aria-busy={parallelActionsStatus.isRunning}>
+                  {parallelActionsStatus.executionTime && `${parallelActionsStatus.executionTime} ms`}
                 </span>
               </td>
             </tr>
