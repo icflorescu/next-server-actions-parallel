@@ -4,7 +4,8 @@
 [![Sponsor the author][sponsor-image]][sponsor-url]
 
 Run multiple Next.js server actions in parallel.  
-Like [tRPC](https://trpc.io), but without the boilerplate.
+
+> The missing ingredient to build [tRPC](https://trpc.io)-like workflows, but without the boilerplate.
 
 ## TL;DR
 
@@ -97,10 +98,10 @@ Well, that's what [next-server-actions-parallel](https://github.com/icflorescu/n
 
 ## How does it work?
 
-The `createParallelAction` is simply wrapping the promise your server action returns in an array (a single-ellement tuple, to be more precise - see note below) and returning that array instead of the result of the promise.
+The `createParallelAction` is simply wrapping the promise your server action returns in an array (a single-ellement tuple, to be more precise - see note below) and returning that array instead of the result of the promise.  
 The `runParallelAction` client-side utility function will simply await the promise and return the array element.
 
-This repository contains a simple Next.js app that demonstrates it in action, so you can check it oun in different environments and decide if it makes sense for your project.
+This repository contains a simple Next.js app that demonstrates it in action and benchmaks it against REST API routes and default server actions, so you can check it oun in different environments and decide if it makes sense for your project.
 
 - [Check it on StackBlitz ⚡️](https://stackblitz.com/~/github.com/icflorescu/next-server-actions-parallel)
 - [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ficflorescu%2Fnext-server-actions-parallel)
