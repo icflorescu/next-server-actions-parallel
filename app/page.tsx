@@ -16,8 +16,8 @@ type ExecutionStatus = {
 const initialStatus: ExecutionStatus = { isRunning: false };
 
 export default function Home() {
-  const [invocations, setInvocations] = useState(5);
-  const [invocationDuration, setInvocationDuration] = useState(500);
+  const [invocations, setInvocations] = useState(10);
+  const [invocationDuration, setInvocationDuration] = useState(1000);
   const [apiRoutesStatus, setApiRoutesStatus] = useState<ExecutionStatus>(initialStatus);
   const [defaultActionsStatus, setDefaultActionsStatus] = useState<ExecutionStatus>(initialStatus);
   const [parallelActionsStatus, setParallelActionsStatus] = useState<ExecutionStatus>(initialStatus);
