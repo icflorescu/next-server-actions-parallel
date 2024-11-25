@@ -1,47 +1,41 @@
-.page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.header,
-.footer {
-  padding: 1rem;
-}
-
 .main {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
 }
 
-.output {
+.form {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 600px;
-  max-width: 80%;
+  gap: 1em;
+  align-items: flex-end;
 }
 
-.button {
-  width: 240px;
+.input {
+  max-width: 10em;
+}
+
+.run {
+  margin-bottom: calc(var(--pico-spacing) * 1.375);
 }
 
 .results {
-  min-height: 52px;
-  padding: 1rem;
-  font-family: monospace;
-  background: color-mix(in srgb, var(--gray) 20%, var(--background));
-  border: 1px solid color-mix(in srgb, var(--gray) 70%, var(--background));
-  border-radius: 4px;
+  border: 1px solid var(--pico-table-border-color);
+  white-space: nowrap;
+
+  td:last-child {
+    width: 100%;
+    border-left: 1px solid var(--pico-table-border-color);
+  }
 }
 
-.label {
-  font-size: 87.5%;
-  color: var(--gray);
+.small {
+  font-size: 0.8em;
+}
+
+.hidden {
+  display: none;
 }

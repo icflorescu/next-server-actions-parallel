@@ -1,6 +1,6 @@
 {
   "name": "next-server-actions-parallel",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Run Next.js server actions in parallel. Like tRPC, but without the boilerplate.",
   "keywords": [
     "nextjs",
@@ -14,7 +14,8 @@
     "rpc",
     "performance",
     "react",
-    "typescript"
+    "typescript",
+    "dx"
   ],
   "license": "MIT",
   "repository": "https://github.com/icflorescu/next-server-actions-parallel",
@@ -51,13 +52,16 @@
     "dev": "next dev --turbopack",
     "test": "playwright test",
     "check": "next lint && tsc",
-    "build": "tsup"
+    "build": "next build",
+    "start": "next start",
+    "prepublishOnly": "tsup"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.0",
     "@types/node": "^22.9.3",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "clsx": "^2.1.1",
     "eslint": "^9.15.0",
     "eslint-config-next": "15.0.3",
     "eslint-plugin-no-relative-import-paths": "^1.5.5",
