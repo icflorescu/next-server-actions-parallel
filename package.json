@@ -1,7 +1,7 @@
 {
   "name": "next-server-actions-parallel",
-  "version": "1.0.1",
-  "description": "Run Next.js server actions in parallel.",
+  "version": "1.0.2",
+  "description": "Run Next.js server actions in parallel. Like tRPC, but without the boilerplate.",
   "keywords": [
     "nextjs",
     "server-actions",
@@ -11,6 +11,7 @@
     "concurrent",
     "concurrency",
     "non-blocking",
+    "rpc",
     "performance",
     "react",
     "typescript"
@@ -49,7 +50,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "test": "playwright test",
-    "lint": "next lint",
+    "check": "next lint && tsc",
     "build": "tsup"
   },
   "devDependencies": {

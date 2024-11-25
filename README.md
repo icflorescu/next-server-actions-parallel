@@ -3,16 +3,8 @@
 [![License][license-image]][license-url]
 [![Sponsor the author][sponsor-image]][sponsor-url]
 
-Run multiple Next.js server actions in parallel.
-
-## Why?
-
-Because a lot of people are interested in this feature. See:
-- [https://github.com/vercel/next.js/discussions/50743](https://github.com/vercel/next.js/discussions/50743)
-- [https://github.com/vercel/next.js/issues/69265](https://github.com/vercel/next.js/issues/69265)
-- [https://x.com/cramforce/status/1733240566954230063](https://x.com/cramforce/status/1733240566954230063)
-- [https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently](https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently)
-- [https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series](https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series)
+Run multiple Next.js server actions in parallel.  
+Like [tRPC](https://trpc.io), but without the boilerplate.
 
 ## TL;DR
 
@@ -22,11 +14,12 @@ Install:
 pnpm i next-server-actions-parallel
 ```
 
-Define server actions like so:
+Define your server actions like so:
 
+`app/page.actions.ts`:
 
 ```ts
-// app/page.actions.ts
+'use server';
 
 import { createParallelAction } from 'next-server-actions-parallel';
 
@@ -35,20 +28,22 @@ export const listUsers = createParallelAction(async () => { // 👈 don't forget
 });
 
 export const listProducts = createParallelAction(async (categoryId: string) => {
-  return prisma.product.findMany({ where: { categoryId } }); // 👈 let's assume this takes 3 seconds
+  return prisma.product.findMany({ where: { categoryId } }); // 👈 let's assume this also takes 3 seconds
 });
 ```
 
 Use them like so:
 
+`app/page.tsx`:
+
 ```ts
-// app/page.tsx
 'use client';
+
 import { runParallelAction } from 'next-server-actions-parallel';
 import { listUsers, listProducts } from './page.actions';
 
 export default async function Page() {
-  // this will take slightly more than 3 seconds, not 6.
+  // 👇 this will take slightly more than 3 seconds, but definitely not > 6.
   const [users, products] = await Promise.all([
     runParallelAction(listUsers()),
     runParallelAction(listProducts('82b2ab20-ec1e-4539-85a2-ea6737555250')),
@@ -70,6 +65,15 @@ export default async function Page() {
   );
 }
 ```
+
+## Why this exists?
+
+Because a lot of people are interested in this feature. See:
+- [https://github.com/vercel/next.js/discussions/50743](https://github.com/vercel/next.js/discussions/50743)
+- [https://github.com/vercel/next.js/issues/69265](https://github.com/vercel/next.js/issues/69265)
+- [https://x.com/cramforce/status/1733240566954230063](https://x.com/cramforce/status/1733240566954230063)
+- [https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently](https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently)
+- [https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series](https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series)
 
 ## Show gratitude
 
