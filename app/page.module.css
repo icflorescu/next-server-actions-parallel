@@ -25,11 +25,11 @@
 .results {
   border: 1px solid var(--pico-table-border-color);
   white-space: nowrap;
+}
 
-  td:last-child {
-    width: 100%;
-    border-left: 1px solid var(--pico-table-border-color);
-  }
+.results td:last-child {
+  width: 100%;
+  border-left: 1px solid var(--pico-table-border-color);
 }
 
 .small {
