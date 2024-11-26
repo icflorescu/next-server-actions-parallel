@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { PropsWithChildren, Suspense } from 'react';
+import { PropsWithChildren } from 'react';
 
 export const metadata: Metadata = {
   title: 'Parallel Next.js Server Actions',
@@ -12,9 +12,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
       </head>
-      <body>
-        <Suspense>{children}</Suspense>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
