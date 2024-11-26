@@ -1,6 +1,6 @@
 {
   "name": "next-server-actions-parallel",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Run Next.js server actions in parallel. Like tRPC, but without the boilerplate.",
   "keywords": [
     "nextjs",
