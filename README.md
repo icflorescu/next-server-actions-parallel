@@ -33,7 +33,7 @@ export const listProducts = createParallelAction(async (categoryId: string) => {
 });
 ```
 
-Use them like so:
+Call them like so:
 
 `app/page.tsx`:
 
@@ -67,18 +67,9 @@ export default async function Page() {
 }
 ```
 
-## Why this exists?
-
-Because a lot of people are interested in this feature. See:
-- [https://github.com/vercel/next.js/discussions/50743](https://github.com/vercel/next.js/discussions/50743)
-- [https://github.com/vercel/next.js/issues/69265](https://github.com/vercel/next.js/issues/69265)
-- [https://x.com/cramforce/status/1733240566954230063](https://x.com/cramforce/status/1733240566954230063)
-- [https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently](https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently)
-- [https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series](https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series)
-
 ## How does it perform?
 
-In a nutshell: a lot better than default Next.js server actions, not as fast as REST API routes.  
+In a nutshell: a lot faster than default Next.js server actions, not as fast as REST API routes.  
 Check it in your specific deployment environment and decide if it makes sense for your project.
 
 ## Show gratitude
@@ -89,34 +80,43 @@ If you find [my open-source work](https://github.com/icflorescu) useful, please 
 
 When Vercel added support for server actions in Next.js, a lot of developers - myself included - were hyper-excited about it and saw it as a boilerplate-free alternative to [tRPC.io](https://trpc.io) to [Telefunc](https://telefunc.com).
 
-Many were however disappointed to find that Next.js server actions were executed in series, contrary to what one would expect when triggering them in parallel with `Promise.all`.  
+Many were however disappointed to find that Next.js server actions were only executed in series, contrary to what one would expect when triggering them in parallel with `Promise.all`.  
 It probably worked like that because they were intended to be used for mutations, because _"data should be fetched in server components or using REST API endpoints"_.  
-Plus, since server actions are implemented with `POST` requests, some are reluctant to the idea of using them for fetching data (though `POST` requests **can** and usually **do** return data).
+Plus, since server actions are implemented with `POST` requests, some purists are reluctant to the idea of using them for fetching data, though `POST` requests **can** and usually **do** return data.
 
-However, there are many reasons why projects like [tRPC.io](https://trpc.io), [Telefunc](https://telefunc.com) and other *RPCs were built (and have no problem using `POST` requests to fetch data). If you're **building real, data-rich applications** you'd definitely want something like [tRPC.io](https://trpc.io) for type-safety and the fact that you don't have to build and maintain hundreds of API endpoints just to populate dynamic UI components (autocompletes and selects).
+However, there are many reasons why projects like [tRPC.io](https://trpc.io), [Telefunc](https://telefunc.com) and other *RPCs were built and have no problem using `POST` requests to fetch data. If you're **building real, data-rich applications**, including something like [tRPC.io](https://trpc.io) in your stack gives you type-safety and spares you the effort of building and maintainings maybe hundreds of API endpoints just to populate dynamic UI components (such as autocompletes and selects).
 
-[tRPC.io](https://trpc.io) is the "batteries-included" choice (I'm a big fan and former contributor to the ecosystem - see [tRPC-SvelteKit](https://icflorescu.github.io/trpc-sveltekit/)) but I always found the amount of boilerplate to be a bit discouraging for new developers and/or small projects. [Telefunc](https://telefunc.com) looks like a nice alternative, but it doesn't (yet?) have an obvious way of integrating with the Next.js app router.
+[tRPC.io](https://trpc.io) is the "batteries-included" choice; I'm a big fan and former contributor to the ecosystem - see [tRPC-SvelteKit](https://icflorescu.github.io/trpc-sveltekit/),  but I always found the amount of boilerplate to be a bit discouraging for new developers and/or small projects. [Telefunc](https://telefunc.com) looks like a nice alternative, but it doesn't (yet, as of November 2024) have an obvious way of integrating with the Next.js app router.
 
-It would be nice to use server actions for RPC without the current limitation of being unable to call multiple functions in parallel.
+It would be nice to use server actions for RPC without the current limitation of being unable to call multiple functions in parallel.  
+Here's a non-exhaustive list of issues and discussions where the subject was mentioned:
+- [https://github.com/vercel/next.js/discussions/50743](https://github.com/vercel/next.js/discussions/50743)
+- [https://github.com/vercel/next.js/issues/69265](https://github.com/vercel/next.js/issues/69265)
+- [https://x.com/cramforce/status/1733240566954230063](https://x.com/cramforce/status/1733240566954230063)
+- [https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently](https://stackoverflow.com/questions/77484983/why-are-server-actions-not-executing-concurrently)
+- [https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series](https://stackoverflow.com/questions/78548578/server-actions-in-next-js-seem-to-be-running-in-series)
 
 Well, that's what [next-server-actions-parallel](https://github.com/icflorescu/next-server-actions-parallel) is for.
 
 ## How does it work?
 
-The `createParallelAction` is simply wrapping the promise your server action returns in an array (a single-ellement tuple, to be more precise - see note below) and returning that array instead of the result of the promise.  
-The `runParallelAction` client-side utility function will simply await the promise and return the array element.
+It's actually quite simple:
 
-This repository contains a simple Next.js app that demonstrates it in action and benchmaks it against REST API routes and default server actions, so you can check it oun in different environments and decide if it makes sense for your project.
+- The `createParallelAction` is wrapping the promise your server action returns in an array (a single-ellement tuple, to be more precise - see note below) and returning that array instead of the result of the promise.  
+- The `runParallelAction` client-side utility function will await the promise and return the result.
 
-- [Check it on StackBlitz ⚡️](https://stackblitz.com/~/github.com/icflorescu/next-server-actions-parallel)
-- [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ficflorescu%2Fnext-server-actions-parallel)
+This repository contains a light Next.js app that demonstrates it in action and benchmaks it against REST API routes and default server actions, so you can check it out in different environments and decide if it makes sense for your project.
 
-_Note:_ Wrapping the promise in an object would also work, but I've chosen the array for data-transfer efficiency.
+[Check it on StackBlitz ⚡️](https://stackblitz.com/~/github.com/icflorescu/next-server-actions-parallel)  
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ficflorescu%2Fnext-server-actions-parallel)  
+
+_Note:_  
+Wrapping the promise in an object would also work, but I've chosen to use an array for data-transfer efficiency.
 
 ## Do I actually need to use this library?
 
-Not necessarily. The two functions that are exported by the library are small enough to be easily copied and pasted into your own project.  
-But since this is a common pain point for many developers, I've decided to provide a simple and easy-to-use wrapper. And hope that if you find it useful you won't hesitate to show your eternal gratitude by [throwing a few greenbacks my way ](https://github.com/sponsors/icflorescu), at least for discovering the trick... 😜
+Not necessarily. The two functions that are exported by the library are small enough to be easily copied and pasted into your own project, see [source code here](https://github.com/icflorescu/next-server-actions-parallel/blob/main/src/index.ts).  
+But since this is a common pain point for many developers, I've decided to provide a simple and easy-to-use wrapper... And maybe hope that if you find it useful you won't hesitate to show your eternal gratitude by [throwing a few greenbacks my way ](https://github.com/sponsors/icflorescu), at least for discovering the trick... 😜
 
 ## License
 
