@@ -11,8 +11,8 @@
  *   return await prisma.product.findMany();
  })
  */
-export function createParallelAction<T, U = void>(action: (args: U) => Promise<T>) {
-  return async (args: U) => [action(args)] as const;
+export function createParallelAction<T, U extends unknown[]>(action: (...args: U) => Promise<T>) {
+  return async (...args: U) => [action(...args)] as const;
 }
 
 /**
