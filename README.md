@@ -78,15 +78,15 @@ If you find [my open-source work](https://github.com/icflorescu) useful, please 
 
 ## Background story
 
-When Vercel added support for server actions in Next.js, a lot of developers - myself included - were hyper-excited about it and saw it as a boilerplate-free alternative to [tRPC.io](https://trpc.io) to [Telefunc](https://telefunc.com).
+When Vercel added support for server actions in Next.js, a lot of developers - myself included - were hyper-excited about it and saw it as a boilerplate-free alternative to [tRPC.io](https://trpc.io) or [Telefunc](https://telefunc.com).
 
-Many were however disappointed to find that Next.js server actions were only executed in series, contrary to what one would expect when triggering them in parallel with `Promise.all`.  
-It probably worked like that because they were intended to be used for mutations, because _"data should be fetched in server components or using REST API endpoints"_.  
+Many were, however, disappointed to find that Next.js server actions were only executed in series, contrary to what one would expect when triggering them in parallel with `Promise.all`.  
+It probably worked like that because they were intended to be used for mutations, as _"data should be fetched in server components or using REST API endpoints"_.  
 Plus, since server actions are implemented with `POST` requests, some purists are reluctant to the idea of using them for fetching data, though `POST` requests **can** and usually **do** return data.
 
 However, there are many reasons why projects like [tRPC.io](https://trpc.io), [Telefunc](https://telefunc.com) and other *RPCs were built and have no problem using `POST` requests to fetch data. If you're **building real, data-rich applications**, including something like [tRPC.io](https://trpc.io) in your stack gives you type-safety and spares you the effort of building and maintainings maybe hundreds of API endpoints just to populate dynamic UI components (such as autocompletes and selects).
 
-[tRPC.io](https://trpc.io) is the "batteries-included" choice; I'm a big fan and former contributor to the ecosystem - see [tRPC-SvelteKit](https://icflorescu.github.io/trpc-sveltekit/),  but I always found the amount of boilerplate to be a bit discouraging for new developers and/or small projects. [Telefunc](https://telefunc.com) looks like a nice alternative, but it doesn't (yet, as of November 2024) have an obvious way of integrating with the Next.js app router.
+[tRPC.io](https://trpc.io) is the "batteries-included" choice; I'm a big fan and former contributor to the ecosystem - see [tRPC-SvelteKit](https://icflorescu.github.io/trpc-sveltekit/), but I always found the amount of boilerplate to be a bit discouraging for new developers and/or small projects. [Telefunc](https://telefunc.com) looks like a nice alternative, but it doesn't (yet, as of November 2024) have an obvious way of integrating with the Next.js app router.
 
 It would be nice to use server actions for RPC without the current limitation of being unable to call multiple functions in parallel.  
 Here's a non-exhaustive list of issues and discussions where the subject was mentioned:
@@ -116,7 +116,11 @@ Wrapping the promise in an object would also work, but I've chosen to use an arr
 ## Do I actually need to use this library?
 
 Not necessarily. The two functions that are exported by the library are small enough to be easily copied and pasted into your own project, see [source code here](https://github.com/icflorescu/next-server-actions-parallel/blob/main/src/index.ts).  
-But since this is a common pain point for many developers, I've decided to provide a simple and easy-to-use wrapper... And maybe hope that if you find it useful you won't hesitate to show your eternal gratitude by [throwing a few greenbacks my way ](https://github.com/sponsors/icflorescu), at least for discovering the trick... 😜
+But since this is a common pain point for many developers, I've decided to provide a simple and easy-to-use wrapper... And maybe hope that if you find it useful you won't hesitate to show your eternal gratitude by [throwing a few greenbacks my way](https://github.com/sponsors/icflorescu), at least for discovering the trick... 😜
+
+## Acknowledgements
+
+Many thanks to [Will Koehler](https://github.com/willkoehler) for being the first person to support this project.
 
 ## License
 
