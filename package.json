@@ -51,25 +51,25 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "test": "playwright test",
-    "check": "next lint && tsc",
+    "lint": "biome check",
+    "format": "biome check --write",
+    "check": "biome check && tsc",
     "build": "next build",
     "start": "next start",
     "prepublishOnly": "pnpm version patch && tsup"
   },
   "devDependencies": {
-    "@playwright/test": "^1.49.1",
-    "@types/node": "^22.10.5",
-    "@types/react": "^19.0.4",
-    "@types/react-dom": "^19.0.2",
+    "@biomejs/biome": "2.4.16",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "clsx": "^2.1.1",
-    "eslint": "^9.17.0",
-    "eslint-config-next": "15.1.4",
-    "eslint-plugin-no-relative-import-paths": "^1.6.1",
-    "next": "15.1.4",
-    "playwright": "^1.49.1",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.3"
+    "next": "16.2.9",
+    "playwright": "^1.60.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
   }
 }

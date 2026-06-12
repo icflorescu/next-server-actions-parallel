@@ -37,8 +37,8 @@ export default function ClientPage({ isTesting }: { isTesting: boolean }) {
     let start = Date.now();
     let results = JSON.stringify(
       await Promise.all(
-        data.map(({ n, duration }) => fetch(`/api?n=${n}&duration=${duration}`).then((res) => res.json()))
-      )
+        data.map(({ n, duration }) => fetch(`/api?n=${n}&duration=${duration}`).then((res) => res.json())),
+      ),
     );
     setApiRoutesStatus({ isRunning: false, executionTime: Date.now() - start, results });
 
@@ -59,7 +59,7 @@ export default function ClientPage({ isTesting }: { isTesting: boolean }) {
     const data = Array.from({ length: invocations }, (_, i) => ({ n: i + 1, duration }));
     const start = Date.now();
     const results = JSON.stringify(
-      await Promise.all(data.map((payload) => runParallelAction(nonBlockingEcho(payload))))
+      await Promise.all(data.map((payload) => runParallelAction(nonBlockingEcho(payload)))),
     );
     setParallelActionsStatus({ isRunning: false, executionTime: Date.now() - start, results });
   };
@@ -77,7 +77,7 @@ export default function ClientPage({ isTesting }: { isTesting: boolean }) {
             server actions
           </a>{' '}
           vs.{' '}
-          <a href="https://github.com/icflorescu/next-server-actions-parallel" target="_blank">
+          <a href="https://github.com/icflorescu/next-server-actions-parallel" target="_blank" rel="noopener">
             parallel server actions
           </a>
           .
@@ -109,7 +109,7 @@ export default function ClientPage({ isTesting }: { isTesting: boolean }) {
               data-testid="duration"
             />
           </label>
-          <button className={classes.run} aria-busy={isRunning} data-testid="run">
+          <button type="submit" className={classes.run} aria-busy={isRunning} data-testid="run">
             Run
           </button>
         </form>
@@ -153,12 +153,12 @@ export default function ClientPage({ isTesting }: { isTesting: boolean }) {
       </section>
       <footer className={classes.small}>
         Created by{' '}
-        <a href="https://github.com/icflorescu" title="Ionuț-Cristian Florescu" target="_blank">
+        <a href="https://github.com/icflorescu" title="Ionuț-Cristian Florescu" target="_blank" rel="noopener">
           Ionuț-Cristian Florescu
         </a>
       </footer>
       <div style={{ display: isTesting ? undefined : 'none' }}>
-        <button data-testid="test" onClick={handleTestClick} />
+        <button type="button" data-testid="test" onClick={handleTestClick} />
         {parallelActionsStatus.results && (
           <>
             <div data-testid="results-content">{parallelActionsStatus.results}</div>
