@@ -71,5 +71,6 @@
     "react-dom": "19.2.7",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3"
-  }
+  },
+  "packageManager": "pnpm@11.6.0"
 }
