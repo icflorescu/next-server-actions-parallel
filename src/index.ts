@@ -11,7 +11,9 @@
  *   return await prisma.product.findMany();
  })
  */
-export function createParallelAction<T, U extends unknown[]>(action: (...args: U) => Promise<T>) {
+export function createParallelAction<T, U extends unknown[]>(
+  action: (...args: U) => Promise<T>,
+): (...args: U) => Promise<readonly [Promise<T>]> {
   return async (...args: U) => [action(...args)] as const;
 }
 
@@ -25,6 +27,6 @@ export function createParallelAction<T, U extends unknown[]>(action: (...args: U
  *   runParallelAction(listProducts())
  * ]);
  */
-export async function runParallelAction<T>(result: Promise<readonly [Promise<T>]>) {
+export async function runParallelAction<T>(result: Promise<readonly [Promise<T>]>): Promise<T> {
   return (await result)[0];
 }
